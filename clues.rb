@@ -35,7 +35,14 @@ class Clue
     end
     case session[:state]
     when :bored
-      response << "Hi #{name} I'm confused"
+      taunts = [
+        "I think this line's mostly filler",
+        "Bored now",
+        "Occasionally, I'm callous and strange",
+        "Darn your sinister attraction",
+        "Bunnies frighten me"
+      ]
+      response << taunts.sample
     when :finish
       session[:state] = :bored
       response << "Replace the symbols to find where you need to go"
