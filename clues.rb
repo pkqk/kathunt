@@ -22,7 +22,11 @@ class Clue
   end
 
   def name
-    session[:name]
+    if session[:name] =~ /kat/i
+      'Foxface'
+    else
+      session[:name]
+    end
   end
 
   def talk(params)
