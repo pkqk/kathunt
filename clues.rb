@@ -37,16 +37,18 @@ class Clue
     when :bored
       response << "Hi #{name} I'm confused"
     when :finish
-      response << "Hi #{name} I'm confused"
+      session[:state] = :bored
+      response << "Replace the symbols to find where you need to go"
     when :hunt
-      response = "Nope, nope, nope"
+      reply = "Nope, nope, nope"
       PLACES.each do |key, pattern, place|
         if pattern =~ msg
           session[key] = true
-          response << "#{place} = #{CLUES[key]}"
+          reply = "#{place} = #{CLUES[key]}"
           break
         end
       end
+      response << reply
       if [session[:nola], session[:casita], session[:happiness]].all?
         session[:state] = :finish
         response << DESTINATION
