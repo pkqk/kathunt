@@ -10,11 +10,12 @@ class Clue
     [:happiness, /happiness( *)forget/i, "Happiness Forgets"]
   ]
   CLUES = {
-    :nola => 'AAAA',
-    :casita => 'CCCC',
-    :happiness => 'HFHF'
+    :nola => '🌃🍊🍃🍎',
+    :casita => '🐫🍎🌞👀👖🍏',
+    :happiness => '🏠🍏🍕🐩👀🎶🍳🎅🌅 🐸🍊🐇🏆👂💦🍣',
+    :princess => '🍕🐇👀🌃🐫🍳🌞🍣 🍊🐸 🌞🏠🍊🐇👂🐶👀👖🐫🏠'
   }
-  DESTINATION = "The final destination = ALKJKD"
+  DESTINATION = "The final destination = #{CLUES[:princess]}"
 
   def initialize(session)
     @session = session
@@ -63,8 +64,7 @@ class Clue
     when :intro
       session[:state] = :hunt
       session[:name] = msg
-      response << "Hi #{name}"
-      response << "let's go hunting…"
+      response << "Hi #{name} let's go hunting…"
     else
       session[:state] = :intro
       response << "Hi, what's your name?"
